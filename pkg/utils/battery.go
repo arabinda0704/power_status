@@ -1,4 +1,4 @@
-// power_status/utils/battery.go
+
 package utils
 
 import (
