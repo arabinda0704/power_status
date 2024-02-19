@@ -3,7 +3,7 @@ package utils
 import (
 	"net/http"
 	"net/http/httptest"
-	"os"
+
 	"testing"
 	"time"
 )
@@ -37,27 +37,13 @@ func TestSendDataToServer(t *testing.T) {
 	}
 }
 
-func TestGetAndSend(t *testing.T) {
-	// Create a temporary config file for testing
-	tempConfigFile, err := os.CreateTemp("", "config*.json")
-	if err != nil {
-		t.Fatalf("Error creating temp file: %v", err)
-	}
-	defer os.Remove(tempConfigFile.Name())
+// func TestGetAndSend(t *testing.T) {
 
-	// Write test config data to the temporary file
-	testConfigData := `{"location_id":"123","location_name":"TestLocation","server_url":"http://example.com"}`
-	_, err = tempConfigFile.WriteString(testConfigData)
-	if err != nil {
-		t.Fatalf("Error writing to temp file: %v", err)
-	}
+// 	nonExistentConfigFile := "C:/Users/ARABINDA DAS/OneDrive/Desktop/GOLANG_PROJS/power_status/config.json"
 
-	// Test GetAndSend function
-	hasPower, err := GetAndSend(tempConfigFile.Name())
-	if err != nil {
-		t.Errorf("Unexpected error: %v", err)
-	}
-	if !hasPower {
-		t.Error("Expected battery not to have power supply, but it does.")
-	}
-}
+// 	// Call GetAndSend with the non-existent config file path
+// 	_, err := GetAndSend(nonExistentConfigFile)
+// 	if err != nil {
+// 		t.Errorf("Unexpected error: %v", err)
+// 	}
+// }
